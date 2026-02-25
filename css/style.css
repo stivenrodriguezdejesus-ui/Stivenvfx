@@ -1,0 +1,111 @@
+body {
+    background-color: #0f0f0f; /* Negro elegante estilo YouTube */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+ 
+
+header h3, header h2, header h1 { 
+    font-size: 35px !important; 
+    color: rgb(255, 255, 255) !important; 
+}
+
+/* Esto ordena los videos uno al lado del otro */
+.grid-videos {
+    display: flex;
+    flex-wrap: wrap; /* Si no caben, saltan abajo */
+    gap: 20px;       /* Espacio entre videos */
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/* Contenedor que agrupa tus videos */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Contenedor que agrupa tus videos */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centra los videos */
+    padding: 20px;
+}
+
+/* Reducir el tamaño del Short (Vertical) */
+.tarjeta.short {
+    width: 250px; /* Aquí controlas el ancho del celular */
+}
+
+/* Reducir el tamaño de los de Influencer (Horizontales) */
+.tarjeta.horizontal {
+    width: 250px; /* Aquí controlas el ancho de la pantalla de TV */
+}
+
+/* Esta regla es OBLIGATORIA para que el video no se salga de la tarjeta */
+video {
+    width: 100%; 
+    height: auto;
+    border-radius: 12px; /* Bordes redondeados para que se vea pro */
+    border: 2px solid #333;
+}
+
+/* La regla de ORO: hace que el video respete el tamaño de la tarjeta */
+video {
+    width: 100% !important;
+    height: auto;
+    border-radius: 12px;
+}
+/* --- EFECTO ZOOM INTERACTIVO --- */
+
+/* 1. Preparamos la tarjeta */
+.tarjeta {
+/* Esto ya lo tenías, pero asegúrate de que esté: */
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+background: #1e1e1e;
+    padding: 10px;
+    border-radius: 15px;
+    overflow: hidden; /* CRUCIAL: Mantiene el zoom dentro de los bordes */
+    /* Combinamos las transiciones en UNA sola línea */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 2. La acción al pasar el mouse (:hover) */
+.tarjeta:hover {
+
+transform: translateY(-8px); /* Sube la tarjeta */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6); /* Sombra más fuerte */
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+}
+
+/* 3. El zoom específico al video */
+.tarjeta:hover video {
+    transform: scale (1.08);/* Hace un zoom del 8% al video */
+    transition: transform 0.3s ease; /* Zoom suave */
+}
+
+/* Esto ajusta la web para celulares */
+@media (max-width: 600px) {
+    .grid {
+        display: flex;
+        flex-direction: column; /* Apila los videos uno arriba del otro */
+        align-items: center;
+    }
+
+    .tarjeta.short, .tarjeta.horizontal {
+        width: 90%; /* Que ocupen casi todo el ancho del celular */
+        max-width: 350px;
+    }
+
+    h1 { font-size: 1.8rem; } /* Achica un poco el título principal */
+}
